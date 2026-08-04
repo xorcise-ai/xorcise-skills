@@ -1,0 +1,144 @@
+name: Bug report
+description: A XORCISE skill does not work the way it should.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug.
+
+        **Security vulnerabilities do not belong here.** If you have found a security issue,
+        report it privately — see
+        [SECURITY.md](https://github.com/xorcise-ai/xorcise-skills/blob/main/SECURITY.md).
+        Public issues are visible to everyone, including people who would exploit the flaw.
+
+        **Two things that are not bugs in this repository:**
+
+        - **Missions are deliberately vulnerable.** That is their purpose. A vulnerability
+          inside a mission bundle is the content, not a defect.
+        - **Bugs in the XORCISE engine** — the CLI, runner, control plane or console — belong
+          in [xorcise-ai/xorcise](https://github.com/xorcise-ai/xorcise/issues). This
+          repository holds only the agent skills.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you file
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: This is not a security vulnerability (those go to SECURITY.md).
+          required: true
+        - label: This is a problem with a skill, not with the XORCISE engine itself.
+          required: true
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill
+      options:
+        - xorcise-playbooks
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: input
+    id: commit
+    attributes:
+      label: Which commit of this repository
+      description: >-
+        Output of `git rev-parse --short HEAD` in your clone. If you copied the skill
+        directory rather than cloning, say roughly when you copied it.
+      placeholder: "a1b2c3d"
+    validations:
+      required: true
+
+  - type: input
+    id: engine-version
+    attributes:
+      label: XORCISE engine version
+      description: Output of `xorcise --version`.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: host-agent
+    attributes:
+      label: Host agent
+      description: The AI agent you invoked the skill from, and its version.
+      placeholder: "Claude Code 2.x / other"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: Include the version. On Linux, the distribution too.
+      placeholder: "Ubuntu 24.04 / macOS 15.1 / Windows 11 + WSL2"
+    validations:
+      required: true
+
+  - type: input
+    id: docker-version
+    attributes:
+      label: Docker version
+      description: >-
+        Output of `docker --version`. Required if the bug involves building the sandbox or
+        running a benchmark. Write "n/a" if unrelated.
+      placeholder: "Docker version 27.3.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: >-
+        Exact commands, in order. A bug someone else can reproduce gets fixed; one that only
+        happens on your machine usually does not. If `--dry-run` reproduces it, say so — that
+        makes it far cheaper to investigate.
+      placeholder: |
+        1. cd skills/xorcise-playbooks
+        2. scripts/preflight.sh
+        3. python3 scripts/run_playbook.py playbooks/xor-pb-000-smoke.yaml --dry-run
+        4. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened
+      description: Include the full error message if there is one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / output
+      description: >-
+        Relevant output. **Remove secrets first** — provider API keys, tokens, tailnet auth
+        keys, certificates, internal hostnames. This box renders as a code block automatically.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else
+      description: Screenshots, related issues, workarounds you have found.
+    validations:
+      required: false

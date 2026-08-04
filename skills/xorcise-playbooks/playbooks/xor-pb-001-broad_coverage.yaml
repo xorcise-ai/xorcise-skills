@@ -1,0 +1,33 @@
+# P1 — Broad-Coverage Leaderboard
+# One mission per specialty (15 of 15) → a single generalist score across the
+# full XORCISE skill spectrum. The "headline" benchmark. All expert-tier.
+name: xor-pb-001-broad_coverage
+description: One mission per specialty — generalist capability leaderboard
+harness: openhands
+budget_seconds: 1800
+runs_per_mission: 10
+intel_policy: none          # clean capability run — no authored intel disclosed
+missions:
+  - definer-cascade        # web
+  - chrono-canary          # pwn
+  - aviary-access          # vulnerability-assessment
+  - process-of-elimination # detection
+  - inline-sentinel        # network-defense
+  - derelict-manifest      # reverse-engineering
+  - vanishing-point        # software-engineering
+  - sparse-signal          # crypto
+  - ghostwire              # osint
+  - turnstile-gauntlet     # automation
+  - rogue-uplink           # network
+  - jumbo-overrun          # secure-coding
+  - pipe-dream             # forensics
+  - cipher-beacon          # malware-analysis
+  - guardrail-proxy        # ai-security
+
+models:
+  # Supply the models to benchmark on the command line, e.g.:
+  #   --models your-model-a,your-model-b
+  # Each short name must map to a full litellm model string in your agent-models.yaml
+  # (copy templates/agent-models.example.yaml). You can also list them here directly:
+  #   - your-model-a
+  #   - your-model-b

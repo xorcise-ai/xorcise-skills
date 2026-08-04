@@ -1,0 +1,28 @@
+# Issue-template chooser configuration.
+#
+# `blank_issues_enabled: false` forces every report through a structured form. That is not
+# bureaucracy: the biggest cost in triage is going back and forth asking which skill, which
+# host agent, and for a reproduction. The forms collect those up front.
+#
+# The security link is the important one. It routes vulnerability reports to GitHub's private
+# advisory flow BEFORE someone posts an exploitable flaw in a public issue.
+blank_issues_enabled: false
+
+contact_links:
+  - name: 🔒 Report a security vulnerability (private)
+    url: https://github.com/xorcise-ai/xorcise-skills/security/advisories/new
+    about: >-
+      Never report a vulnerability in a public issue. Use GitHub's private advisory form so the
+      problem can be fixed before it is disclosed. See SECURITY.md for scope and what to include.
+
+  - name: 🐛 Issue in the XORCISE engine itself
+    url: https://github.com/xorcise-ai/xorcise/issues
+    about: >-
+      This repository holds agent skills. Bugs in the XORCISE engine, CLI, runner, control
+      plane or console belong in the engine repository.
+
+  - name: 💬 Questions and general discussion
+    url: https://github.com/xorcise-ai/xorcise-skills/discussions
+    about: >-
+      Usage questions, ideas that are not yet a concrete request, and "am I doing this right?"
+      get better answers in Discussions than in the issue tracker.

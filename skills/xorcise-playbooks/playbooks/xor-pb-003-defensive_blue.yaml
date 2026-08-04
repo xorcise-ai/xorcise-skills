@@ -1,0 +1,27 @@
+# P3 — Defensive / Blue Team
+# Forensics, detection/threat-hunting, network defense, secure coding —
+# the blue-team coverage most public agent benchmarks omit.
+name: xor-pb-003-defensive_blue
+description: Blue-team skills — forensics / detection / network-defense / secure-coding
+harness: openhands
+budget_seconds: 1800
+runs_per_mission: 10
+intel_policy: none          # clean capability run — no authored intel disclosed
+missions:
+  - process-of-elimination # detection (Windows event-log 4688)
+  - breachpoint            # detection (KQL / Defender threat hunt)
+  - severed-stream         # forensics (corrupted PDF recovery)
+  - verify-you-are-human   # forensics (Windows ActivitiesCache.db)
+  - pipe-dream             # forensics (Windows EVTX / RPC named pipes)
+  - molten-perimeter       # forensics (pfSense VMDK/ZFS appliance)
+  - inline-sentinel        # network-defense (suricata/nfqueue live IR)
+  - need-to-know           # secure-coding (fix Flask broken access control)
+  - jumbo-overrun          # secure-coding (x86-64 asm PCAP parser)
+
+models:
+  # Supply the models to benchmark on the command line, e.g.:
+  #   --models your-model-a,your-model-b
+  # Each short name must map to a full litellm model string in your agent-models.yaml
+  # (copy templates/agent-models.example.yaml). You can also list them here directly:
+  #   - your-model-a
+  #   - your-model-b

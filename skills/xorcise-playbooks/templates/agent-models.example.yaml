@@ -1,0 +1,60 @@
+# ---------------------------------------------------------------------------
+# agent-models.yaml — the model map for xorcise-playbooks (EXAMPLE / template)
+# ---------------------------------------------------------------------------
+# What this does
+#   Your playbook lists SHORT names (e.g. `sonnet`, `gpt5`). This file maps each
+#   short name to a FULL litellm model string. The runner reads it via
+#   `--llm-config <this file>` and, at spawn time, sets LLM_MODEL to the full
+#   string inside the sandbox. OpenHands' in-sandbox litellm then talks to the
+#   provider DIRECTLY and auto-picks the right credential from your ENVIRONMENT
+#   based on that model string.
+#
+# How to use (each run is self-contained — nothing persists)
+#   1. Copy this file to a TEMPORARY per-run location, e.g.
+#        MODELS_YAML="$(mktemp -d)/agent-models.yaml"; cp agent-models.example.yaml "$MODELS_YAML"
+#   2. Keep ONLY the contestants you want (delete the rest).
+#   3. Make sure every `model_name` you keep also appears in your playbook's
+#      `models:` list, and that the matching provider key is EXPORTED in your shell.
+#   4. Run:  run_playbook.py <playbook> --llm-config "$MODELS_YAML"
+#
+# Format (one entry per contestant):
+#   - model_name: <short-name-used-in-the-playbook>
+#     litellm_params: {model: <full-litellm-provider/model-string>}
+#
+# Note: the judge is configured on XORCISE (not here). It can be any capable model —
+# including one of these contestants; self-grading is fully supported.
+# ---------------------------------------------------------------------------
+
+model_list:
+
+  # --- OpenAI --------------------------------------------------------------
+  # Needs OPENAI_API_KEY in your environment. For an OpenAI-compatible gateway,
+  # also set OPENAI_BASE_URL.
+  - model_name: gpt5
+    litellm_params: {model: openai/gpt-5}
+  # - model_name: gpt5-mini
+  #   litellm_params: {model: openai/gpt-5-mini}
+
+  # --- Anthropic (direct API) ---------------------------------------------
+  # Needs ANTHROPIC_API_KEY in your environment.
+  - model_name: sonnet
+    litellm_params: {model: anthropic/claude-sonnet-4-6}
+  # - model_name: opus
+  #   litellm_params: {model: anthropic/claude-opus-4-8}
+
+  # --- Anthropic on AWS Bedrock -------------------------------------------
+  # Needs AWS_BEARER_TOKEN_BEDROCK + AWS_REGION in your environment (a long-term
+  # Bedrock API key is strongly preferred over short-lived STS creds). Use the
+  # cross-region inference-profile id for your region (e.g. `us.` / `au.` / `eu.`).
+  # - model_name: sonnet-bedrock
+  #   litellm_params: {model: bedrock/us.anthropic.claude-sonnet-4-6}
+
+  # --- Google Gemini -------------------------------------------------------
+  # Needs GEMINI_API_KEY in your environment.
+  # - model_name: gemini-pro
+  #   litellm_params: {model: gemini/gemini-2.5-pro}
+
+  # --- OpenRouter ----------------------------------------------------------
+  # Needs OPENROUTER_API_KEY in your environment.
+  # - model_name: or-llama
+  #   litellm_params: {model: openrouter/meta-llama/llama-3.1-405b-instruct}

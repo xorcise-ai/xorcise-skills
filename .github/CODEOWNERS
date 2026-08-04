@@ -1,0 +1,29 @@
+# Code owners. Both maintainers are on every rule so either can review; a single owner
+# would deadlock. See MAINTAINERS.md.
+#
+#   @guru-xorciseai      Guru Hariharaun      — author and maintainer
+#   @christo-xorciseai   Christo Joby Antony  — maintainer
+#
+# Two silent failure modes — neither reports an error at merge time:
+#   1. an owner without WRITE access to this repository is ignored;
+#   2. a handle that does not resolve is skipped, and the rule then protects nothing.
+# Check for GitHub's warning banner on this file after pushing.
+
+*                        @guru-xorciseai @christo-xorciseai
+
+# The skills themselves — what this repository exists to publish.
+/skills/                 @guru-xorciseai @christo-xorciseai
+
+# Repository governance and configuration.
+/.github/                @guru-xorciseai @christo-xorciseai
+/SECURITY.md             @guru-xorciseai @christo-xorciseai
+/CODE_OF_CONDUCT.md      @guru-xorciseai @christo-xorciseai
+/ACCEPTABLE_USE.md       @guru-xorciseai @christo-xorciseai
+/CONTRIBUTING.md         @guru-xorciseai @christo-xorciseai
+/MAINTAINERS.md          @guru-xorciseai @christo-xorciseai
+
+# Legal instruments. A change here alters what contributors have agreed to and what Fifth
+# Domain may do with their work — it is never a routine edit, and never a drive-by fix.
+/LICENSE                 @guru-xorciseai @christo-xorciseai
+/NOTICE                  @guru-xorciseai @christo-xorciseai
+/CLA.md                  @guru-xorciseai @christo-xorciseai

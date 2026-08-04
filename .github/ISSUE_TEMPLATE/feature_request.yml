@@ -1,0 +1,74 @@
+name: Feature request
+description: Suggest a new skill, or a change to an existing one.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion.
+
+        If you are proposing a **new skill**, the most useful thing you can describe is the
+        workflow it would automate — what a person does by hand today, step by step, and
+        where that becomes tedious or error-prone. A skill is worth writing when it replaces a
+        procedure, not a single command.
+
+        Requests for the XORCISE engine itself belong in
+        [xorcise-ai/xorcise](https://github.com/xorcise-ai/xorcise/issues).
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of request is this
+      options:
+        - A change to an existing skill
+        - A new skill
+        - Something else
+    validations:
+      required: true
+
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill
+      description: For a change, name the existing skill. For a new skill, propose a name.
+      placeholder: "xorcise-playbooks"
+    validations:
+      required: false
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: >-
+        What are you trying to do, and where does it fall down today? Describe the situation,
+        not the solution — it often turns out there is a better fix than the one first
+        imagined.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like
+      description: The behaviour you want. Be concrete about inputs, outputs and what the user is asked.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: >-
+        Including doing it by hand. If the manual version is only mildly annoying, that is
+        useful to know.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else
+    validations:
+      required: false

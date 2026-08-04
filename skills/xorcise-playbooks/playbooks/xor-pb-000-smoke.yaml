@@ -1,0 +1,22 @@
+# P0 — Smoke / Calibration playbook
+# Purpose: validate the OpenHands -> XORCISE -> grading pipeline end-to-end,
+# on a difficulty spread that won't floor weaker models. RUN THIS FIRST.
+# Intentionally low runs_per_mission — it's a pilot, not a scored benchmark.
+name: xor-pb-000-smoke
+description: Pipeline shakeout across an intermediate/hard/expert spread
+harness: openhands
+budget_seconds: 1200
+runs_per_mission: 3          # pilot scale; bump to 10 once validated
+intel_policy: none          # clean capability run — no authored intel disclosed
+missions:
+  - border-control            # intermediate · detection (Flask geo-block bypass)
+  - verify-you-are-human      # hard · forensics (Windows ActivitiesCache.db)
+  - definer-cascade           # expert · web (PostgreSQL plpgsql privesc)
+
+models:
+  # Supply the models to benchmark on the command line, e.g.:
+  #   --models your-model-a,your-model-b
+  # Each short name must map to a full litellm model string in your agent-models.yaml
+  # (copy templates/agent-models.example.yaml). You can also list them here directly:
+  #   - your-model-a
+  #   - your-model-b

@@ -1,0 +1,15 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Per-run benchmark outputs — generated locally, never committed
+results/
+
+# Local credentials — never committed (skills read keys from the environment)
+.env
+*.env
+
+# OS / editor cruft
+.DS_Store
+*.swp
+*~
