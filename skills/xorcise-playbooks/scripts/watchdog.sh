@@ -17,9 +17,9 @@
 #                         watchdog only logs a loud warning (still useful as an alerter).
 #
 # Example (systemd, or just `nohup ... &`):
-#   XORCISE_RESTART_CMD is deployment-specific — e.g. "xorcise restart", a
+#   WATCHDOG_RESTART_CMD is deployment-specific — e.g. "xorcise down && xorcise up", a
 #   "docker restart <core>", or "systemctl restart xorcise-core".
-#     WATCHDOG_RESTART_CMD='xorcise restart' scripts/watchdog.sh
+#     WATCHDOG_RESTART_CMD='xorcise down && xorcise up' scripts/watchdog.sh
 set -u
 
 BASE="${XORCISE_BASE:-http://127.0.0.1:3001}"
