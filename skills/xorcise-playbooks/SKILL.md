@@ -374,7 +374,7 @@ This is **long-running** — often hours for the big playbooks. Let the user kno
   For extra safety on very long runs, start the optional core watchdog alongside it so a
   rare core wedge self-heals instead of stalling the matrix:
   ```bash
-  WATCHDOG_RESTART_CMD='xorcise restart' scripts/watchdog.sh &   # restart cmd is yours to set
+  WATCHDOG_RESTART_CMD='xorcise down && xorcise up' scripts/watchdog.sh &   # restart cmd is yours to set
   ```
 - If the host is memory-constrained or the core looks stressed, lower `--concurrency`.
 
