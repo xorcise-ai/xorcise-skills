@@ -164,7 +164,7 @@ Put the *why* in the body. The diff already shows the what.
 3. Open a pull request against `main` on
    [xorcise-ai/xorcise-skills](https://github.com/xorcise-ai/xorcise-skills). Fill in the
    template; each item maps to something a reviewer would otherwise check by hand.
-4. `main` is protected: every change lands through a pull request. Both maintainers are
+4. `main` is protected: every change lands through a pull request. The maintainer is
    automatically requested for review via [`CODEOWNERS`](.github/CODEOWNERS).
 
 Maintainers are listed in [`MAINTAINERS.md`](MAINTAINERS.md).
